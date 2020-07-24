@@ -52,9 +52,8 @@ svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMus
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autoreboot lean/luci-app-autoreboot
 wget -P lean/luci-app-autoreboot/root/usr/share/rpcd/acl.d https://raw.githubusercontent.com/project-openwrt/openwrt/master/package/lean/luci-app-autoreboot/root/usr/share/rpcd/acl.d/luci-app-autoreboot.json
 # luci-app-vsftpd
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-vsftpd lean/luci-app-vsftpd
-wget -P lean/luci-app-vsftpd/root/usr/share/rpcd/acl.d https://raw.githubusercontent.com/project-openwrt/openwrt/master/package/lean/luci-app-vsftpd/root/usr/share/rpcd/acl.d/luci-app-vsftpd.json
-svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/vsftpd-alt lean/vsftpd-alt
+svn co https://github.com/project-openwrt/openwrt/branches/master/package/lean/luci-app-vsftpd lean/luci-app-vsftpd
+svn co https://github.com/project-openwrt/openwrt/branches/master/package/lean/vsftpd-alt lean/vsftpd-alt
 # luci-app-netdata
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata lean/luci-app-netdata
 # zh_cn to zh_Hans
