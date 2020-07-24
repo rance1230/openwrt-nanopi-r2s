@@ -45,19 +45,25 @@ svn co https://github.com/project-openwrt/openwrt/branches/master/package/lean/l
 git clone --depth 1 https://github.com/NateLol/luci-app-oled.git lean/luci-app-oled
 # luci-app-unblockmusic
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-unblockmusic lean/luci-app-unblockmusic
-wget -P lean/luci-app-unblockmusic/root/usr/share/rpcd/acl.d https://raw.githubusercontent.com/project-openwrt/openwrt/master/package/lean/luci-app-unblockmusic/root/usr/share/rpcd/acl.d/luci-app-unblockmusic.json
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusic lean/UnblockNeteaseMusic
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/UnblockNeteaseMusicGo lean/UnblockNeteaseMusicGo
 # luci-app-autoreboot
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-autoreboot lean/luci-app-autoreboot
-wget -P lean/luci-app-autoreboot/root/usr/share/rpcd/acl.d https://raw.githubusercontent.com/project-openwrt/openwrt/master/package/lean/luci-app-autoreboot/root/usr/share/rpcd/acl.d/luci-app-autoreboot.json
 # luci-app-vsftpd
 svn co https://github.com/project-openwrt/openwrt/branches/master/package/lean/luci-app-vsftpd lean/luci-app-vsftpd
 svn co https://github.com/project-openwrt/openwrt/branches/master/package/lean/vsftpd-alt lean/vsftpd-alt
 # luci-app-netdata
 svn co https://github.com/coolsnowwolf/lede/trunk/package/lean/luci-app-netdata lean/luci-app-netdata
+popd
+
 # zh_cn to zh_Hans
+pushd openwrt/package
 ../../scripts/convert_translation.sh
+popd
+
+# create acl files
+pushd openwrt
+../scripts/create_acl_for_luci.sh -a
 popd
 
 # initialize feeds
