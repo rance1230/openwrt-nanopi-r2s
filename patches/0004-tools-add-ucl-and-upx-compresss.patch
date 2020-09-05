@@ -5,33 +5,34 @@ Subject: [PATCH] tools: add ucl and upx compresss
 
 Signed-off-by: Chuck <fanck0605@qq.com>
 ---
- tools/Makefile     |  2 ++
+ tools/Makefile     |  3 ++-
  tools/ucl/Makefile | 51 ++++++++++++++++++++++++++++++++++++++++++++++
  tools/upx/Makefile | 35 +++++++++++++++++++++++++++++++
- 3 files changed, 88 insertions(+)
+ 3 files changed, 88 insertions(+), 1 deletion(-)
  create mode 100644 tools/ucl/Makefile
  create mode 100644 tools/upx/Makefile
 
 diff --git a/tools/Makefile b/tools/Makefile
-index 484e95d651..f47daf4ec7 100644
+index 65bec34c1b..8fc44e60fd 100644
 --- a/tools/Makefile
 +++ b/tools/Makefile
-@@ -28,6 +28,7 @@ tools-y += firmware-utils patch-image quilt padjffs2
- tools-y += mm-macros missing-macros cmake bc findutils gengetopt patchelf
- tools-y += mtools dosfstools libressl fakeroot
- tools-$(CONFIG_TARGET_orion_generic) += wrt350nv2-builder upslug2
-+tools-y += ucl upx
- tools-$(CONFIG_TARGET_x86) += qemu
- tools-$(CONFIG_TARGET_mxs) += elftosb sdimage
- tools-$(CONFIG_TARGET_ath79) += lzma-old squashfs
-@@ -40,6 +41,7 @@ tools-$(CONFIG_TARGET_apm821xx)$(CONFIG_TARGET_gemini) += genext2fs
- tools-$(CONFIG_TARGET_tegra) += cbootimage cbootimage-configs
- 
- # builddir dependencies
+@@ -25,7 +25,7 @@ tools-y += autoconf autoconf-archive automake bc bison cmake dosfstools
+ tools-y += e2fsprogs fakeroot findutils firmware-utils flex gengetopt
+ tools-y += libressl libtool lzma m4 make-ext4fs missing-macros mkimage
+ tools-y += mklibs mm-macros mtd-utils mtools padjffs2 patch-image
+-tools-y += patchelf pkgconf quilt squashfskit4 sstrip zip zlib zstd
++tools-y += patchelf pkgconf quilt squashfskit4 sstrip ucl upx zip zlib zstd
+ tools-$(BUILD_B43_TOOLS) += b43-tools
+ tools-$(BUILD_ISL) += isl
+ tools-$(BUILD_TOOLCHAIN) += expat gmp libelf mpc mpfr
+@@ -72,6 +72,7 @@ $(curdir)/quilt/compile := $(curdir)/autoconf/compile $(curdir)/findutils/compil
+ $(curdir)/sdcc/compile := $(curdir)/bison/compile
+ $(curdir)/squashfs/compile := $(curdir)/lzma-old/compile
+ $(curdir)/squashfskit4/compile := $(curdir)/xz/compile $(curdir)/zlib/compile
 +$(curdir)/upx/compile := $(curdir)/ucl/compile
- $(curdir)/bison/compile := $(curdir)/flex/compile
- $(curdir)/flex/compile := $(curdir)/libtool/compile
- $(curdir)/libtool/compile := $(curdir)/m4/compile $(curdir)/autoconf/compile $(curdir)/automake/compile $(curdir)/missing-macros/compile
+ $(curdir)/zlib/compile := $(curdir)/cmake/compile
+ 
+ ifneq ($(HOST_OS),Linux)
 diff --git a/tools/ucl/Makefile b/tools/ucl/Makefile
 new file mode 100644
 index 0000000000..9fb9aec117
